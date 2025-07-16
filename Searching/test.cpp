@@ -2,24 +2,29 @@
 #include<vector>
 using namespace std;
 
- int findDuplicate(vector<int>& nums) {
-        int total=0;
-        int xorTotal=0;
-        for(auto i: nums){
-          total+=i;
+void change(string &str){
+  // cout<<"enter";
+        int arr[26]={0};
+        char ch='a';
+        for(char s:str){
+          // cout<<s<<endl;
+          // bool a=(s-ch==0);
+          
+            if(arr[s-'a']==0){
+            arr[s-'a']=ch;
+            ch++;
+            }
         }
-        for(auto i:nums){
-            xorTotal=xorTotal^i;
+        for(int i=0;i<str.length();i++){
+            str[i]=arr[str[i]-'a'];
+            // cout<<str[i]<<" ";
         }
-      cout<<xorTotal;
-       int result= total-xorTotal;
-      result=result/2;
-       return result;
     }
 
     int main(){
-        vector<int>nums={1,3,4,2,2};
-        int result = findDuplicate(nums);
-        cout<<"Duplicate"<<result<<endl;
+        string str="add";
+        cout<<str<<endl;
+        change(str);
+        cout<<str;
         return 0;
     }
