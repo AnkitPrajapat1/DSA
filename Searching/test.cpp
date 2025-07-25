@@ -1,30 +1,58 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-void change(string &str){
-  // cout<<"enter";
-        int arr[26]={0};
-        char ch='a';
-        for(char s:str){
-          // cout<<s<<endl;
-          // bool a=(s-ch==0);
-          
-            if(arr[s-'a']==0){
-            arr[s-'a']=ch;
-            ch++;
-            }
-        }
-        for(int i=0;i<str.length();i++){
-            str[i]=arr[str[i]-'a'];
-            // cout<<str[i]<<" ";
-        }
-    }
+// int myAtoi(string s)
+// {
+//   int n = s.length();
+//   string ans = "";
+//   int i = 0;
+//   while (s[i] == ' ')
+//   {
+//     i++;
+//   }
+//   // if(s[i]=='-'){
+//   //     ans.push_back(s[i]);
+//   //     i++;
+//   // }
 
-    int main(){
-        string str="add";
-        cout<<str<<endl;
-        change(str);
-        cout<<str;
-        return 0;
+//   for (int i = 0; i < n; i++)
+//   {
+//     if (isalpha(s[i]))
+//       break;
+//     else
+//       ans.push_back(s[i]);
+//   }
+//   return stoi(ans);
+// }
+
+    int myAtoi(string s) {
+        int n=s.length();
+        int ans=0;
+        int i=0;
+        while(s[i]==' ' || s[i]==0){ i++;}
+        // if(s[i]=='-'){
+        //     ans.push_back(s[i]);
+        //     i++;
+        // } 
+        
+        // for(int i=0;i<n;i++){
+        //     if(isalpha(s[i])) break;
+        //     else ans.push_back(s[i]);
+        // }
+        while(i<n){
+            if(isalpha(s[i])) break;
+            int num= s[i]-48;
+            cout<<num<<endl;
+            ans=ans*10+num;
+            i++;
+        }
+        return ans;
     }
+int main()
+{
+  string str = " 42";
+  cout << myAtoi(str);
+  return 0;
+}
